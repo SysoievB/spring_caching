@@ -25,12 +25,11 @@ public class BookService {
     }
 
     public Book saveBook(Book book) {
-        return repo.save(book)
-                .orElseThrow(BookNotFoundException::new);
+        return repo.save(book);
     }
 
-    public Book updateBook(Book newBook) {
-        val oldBook = repo.findById(newBook.getId())
+    public Book updateBook(Long id, Book newBook) {
+        val oldBook = repo.findById(id)
                 .orElseThrow(BookNotFoundException::new);
 
         val updatedBook = oldBook.toBuilder()
@@ -40,9 +39,7 @@ public class BookService {
                 .description(newBook.getDescription())
                 .build();
 
-        return repo.save(updatedBook)
-                .orElseThrow(BookNotFoundException::new);
-
+        return repo.save(updatedBook);
     }
 
     public void deleteBook(Long id) {

@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookRepo extends JpaRepository<Book, Long> {
-
+/*
     Optional<Book> findById(Long id);
 
     List<Book> findAll();
 
-    Optional<Book> save(Book book);
+    Book save(Book book);
 
-    void deleteById(Long id);
+    void deleteById(Long id);*/
 }
