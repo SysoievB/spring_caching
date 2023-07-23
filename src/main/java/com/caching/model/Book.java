@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -19,7 +20,9 @@ import java.time.LocalDate;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class Book implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
