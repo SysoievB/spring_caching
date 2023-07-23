@@ -33,15 +33,15 @@ public class BookService {
         return repo.findAll();
     }
 
-    @Caching(evict = { @CacheEvict(value = "books", allEntries = true) },
-            put = { @CachePut(value = "books", key = "#result.id") })
+    @Caching(evict = {@CacheEvict(value = "books", allEntries = true)},
+            put = {@CachePut(value = "books", key = "#result.id")})
     public Book saveBook(Book book) {
         log.info("Saving book to DB");
         return repo.save(book);
     }
 
-    @Caching(evict = { @CacheEvict(value = "books", allEntries = true) },
-            put = { @CachePut(value = "books", key = "#id") })
+    @Caching(evict = {@CacheEvict(value = "books", allEntries = true)},
+            put = {@CachePut(value = "books", key = "#id")})
     public Book updateBook(Long id, Book newBook) {
         val oldBook = repo.findById(id)
                 .orElseThrow(BookNotFoundException::new);
